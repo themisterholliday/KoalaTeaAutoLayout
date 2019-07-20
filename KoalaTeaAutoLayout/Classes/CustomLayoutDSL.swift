@@ -148,7 +148,7 @@ public extension UIView {
         return closure(LayoutProxy(view: self))
     }
 
-    @discardableResult func constrainEdgesToSuperView() -> [NSLayoutConstraint]? {
+    @discardableResult func constrainEdgesToSuperview() -> [NSLayoutConstraint]? {
         guard let superview = self.superview else { return nil }
         return self.returnedLayout {
             return [

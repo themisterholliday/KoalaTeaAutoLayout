@@ -40,6 +40,16 @@ class ViewController: UIViewController {
         }
 
         setupAnimatedExample()
+
+        // Convenience Examples
+        let edgesToSuperview = UIView()
+        edgesToSuperview.constrainEdgesToSuperview()
+
+        let centerToSuperview = UIView()
+        centerToSuperview.constrainCenterToSuperview()
+
+        let edgesToAnotherView = UIView()
+        edgesToAnotherView.constrainEdges(to: centerToSuperview)
     }
 
     func setupAnimatedExample() {
