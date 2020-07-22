@@ -6,11 +6,10 @@
 //  Copyright (c) 2019 themisterholliday. All rights reserved.
 //
 
-import UIKit
 import KoalaTeaAutoLayout
+import UIKit
 
 class ViewController: UIViewController {
-
     lazy var layoutView = UIView()
     lazy var layoutView2 = UIView()
 
@@ -21,7 +20,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.addSubview(layoutView)
+        view.addSubview(layoutView)
         layoutView.backgroundColor = .red
         layoutView.layout {
             $0.top == self.view.safeAreaLayoutGuide.topAnchor
@@ -30,7 +29,7 @@ class ViewController: UIViewController {
             $0.height.equal(to: self.view.heightAnchor, multiplier: 0.1)
         }
 
-        self.view.addSubview(layoutView2)
+        view.addSubview(layoutView2)
         layoutView2.backgroundColor = .green
         layoutView2.layout {
             $0.centerXAnchor == self.view.centerXAnchor
@@ -53,24 +52,20 @@ class ViewController: UIViewController {
     }
 
     func setupAnimatedExample() {
-        self.view.addSubview(layoutView3)
+        view.addSubview(layoutView3)
         layoutView3.backgroundColor = .blue
-        constraints1 = layoutView3.returnedLayout {
-            return [
-                $0.centerXAnchor == self.view.centerXAnchor,
-                $0.bottom == self.view.safeAreaLayoutGuide.bottomAnchor,
-                $0.height == 80,
-                $0.width == $0.height + 100,
-            ]
+        constraints1 = layoutView3.layout {
+            $0.centerXAnchor == self.view.centerXAnchor
+            $0.bottom == self.view.safeAreaLayoutGuide.bottomAnchor
+            $0.height == 80
+            $0.width == $0.height + 100
         }
 
-        constraints2 = layoutView3.returnedLayout {
-            return [
-                $0.top == layoutView2.bottomAnchor,
-                $0.centerXAnchor == self.view.centerXAnchor,
-                $0.height == 80,
-                $0.width == $0.height + 100,
-            ]
+        constraints2 = layoutView3.layout {
+            $0.top == layoutView2.bottomAnchor
+            $0.centerXAnchor == self.view.centerXAnchor
+            $0.height == 80
+            $0.width == $0.height + 100
         }
         constraints2.deactivateAll()
 
@@ -99,4 +94,3 @@ class ViewController: UIViewController {
         }
     }
 }
-
